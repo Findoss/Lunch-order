@@ -1,0 +1,24 @@
+{
+  "name": "lunch-order",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start pm2.config.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Findoss/Lunch-order.git"
+  },
+  "author": "Nikita Stroganov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Findoss/Lunch-order/issues"
+  },
+  "homepage": "https://github.com/Findoss/Lunch-order#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "simple-json-db": "^2.0.0",
+    "slimbot": "^5.1.0"
+  }
+}
