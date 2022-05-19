@@ -72,10 +72,10 @@ const start = (msg) => {
   const { chat } = msg;
   const { id } = chat;
 
-  if (store.isProccessPoll()) {
+  if (store.isProcessPoll()) {
     bot.sendMsg(
       id,
-      `Ты куда торопишься? Дай отдохнуть от опроса id***${store.idPoll}***`
+      `Ты куда торопишься? Дай отдохнуть от опроса id***${store.getPoll()}***`
     );
     return;
   }
@@ -128,19 +128,6 @@ const menu = (msg) => {
   const { chat } = msg;
   const { id } = chat;
 
-  const cafePriceMenu = cafePrice
-    .map((v) => {
-      let str = "";
-      str += v.combo.reduce((acc, v, i) => {
-        if (i > 0) acc += "+ ";
-        acc += `${cafeMenu[v]} `;
-        return acc;
-      }, "");
-      str += `= ***${v.price}***р`;
-      return str;
-    })
-    .join("\n");
-
   const text = `***Оголодавший, вот меню*** \n\n${cafePriceMenu}`;
 
   bot.sendMsg(id, text);
@@ -173,7 +160,7 @@ slimbot.on("poll", (msg) => {
 
 slimbot.on("poll_answer", (msg) => {
   store.addAnswer({
-    name: `${msg.user.first_name} ${msg.user.last_name}`,
+    name: `${msg.user.first_name} ${msg.user.last_name ?? ""}`,
     username: msg.user.username,
     options: msg.option_ids.map((i) => Object.keys(cafeMenu)[i]),
   });

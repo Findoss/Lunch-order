@@ -1,4 +1,4 @@
-import { cafeMenu, cafePrice } from "./menu.js";
+import { cafe } from "./menu.js";
 
 export const store = {
   poll: {
@@ -7,12 +7,16 @@ export const store = {
   },
   orders: [],
 
-  isProccessPoll() {
+  isProcessPoll() {
     return this.poll.idPoll !== null;
   },
 
   setPoll(id) {
     this.poll.idPoll = id;
+  },
+
+  getPoll() {
+    return this.poll.idPoll;
   },
 
   addAnswer(payload) {
@@ -36,11 +40,11 @@ export const store = {
   getLastOrderText() {
     const lastOrder = this.orders.at(-1).users;
     const textUserOrder = formatUserOrder(lastOrder);
-    const textComnboCount = formatComnboCount(lastOrder);
-    let text = `***Голодные, ваши заказы такие***\n\n`;
+    const textComboCount = formatComboCount(lastOrder);
+    let text = `***Голодные, ваши заказы***\n\n`;
     text += `${textUserOrder}`;
-    text += `\n***Общий заказ***${sumOrder(lastOrder)}\n\n`;
-    text += `${textComnboCount}`;
+    text += `\n***Общий заказ*** (${sumOrder(lastOrder)}р)\n\n`;
+    text += `${textComboCount}`;
 
     return text;
   },
@@ -89,7 +93,7 @@ const formatUserOrder = (users) => {
   }, "");
 };
 
-const formatComnboCount = (users) => {
+const formatComboCount = (users) => {
   const combo = getCombo(users);
 
   return Object.entries(combo).reduce((acc, [k, v]) => {
