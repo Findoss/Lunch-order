@@ -127,7 +127,7 @@ const start = (msg) => {
           .concat("***Общий заказ***\n\n")
           .concat(textAllOrder)
           .concat("\n\n")
-          .concat("***Стоимость***\n\n")
+          .concat("***Итог***\n\n")
           .concat(textOrderPrice);
 
         bot.sendMsg(id, text);
@@ -171,7 +171,8 @@ const commands = {
 };
 
 slimbot.on("message", (msg) => {
-  const cmd = getCommand(msg.text);
+  const rawCmd = msg.text ?? msg.caption;
+  const cmd = getCommand(rawCmd);
 
   if (ADMIN_COMMANDS.includes(cmd) && !ADMIN_IDS.includes(msg.from.id)) {
     bot.sendMsg(msg.chat.id, "Не суетись, я слушаюсь только @Findoss");

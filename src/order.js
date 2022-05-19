@@ -1,4 +1,4 @@
-import { arraysEqual } from "./utils";
+import { arraysEqual } from "./utils.js";
 
 const getPrice = (menu, user) => {
   return menu.find((combo) => {
@@ -63,7 +63,7 @@ const allOrderCombo = ({ food }, { users }) => {
       const combo = getCombo(food, unPackIdCombo(id));
       return `${combo} x${count}`;
     })
-    .join("\n\n");
+    .join("\n");
 };
 
 export const order = {
