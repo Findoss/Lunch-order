@@ -6,9 +6,13 @@ export const objToStr = (obj) => {
 
 export const getCommand = (str) => {
   if (typeof str === "string") {
-    return str.replace("/", "").replace("@tearoshi_news_bot", "");
+    return str.replace("/", "").replace("@findoss_launch_order_bot", "");
   }
   return "";
+};
+
+export const arraysEqual = (a1, a2) => {
+  return JSON.stringify(a1) == JSON.stringify(a2);
 };
 
 export const checkServer = () => {

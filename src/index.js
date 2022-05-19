@@ -10,8 +10,11 @@ import {
   POLL_TIME_LIMIT,
 } from "./config.js";
 
+const INDEX_MENU = 0;
+
 import { store } from "./store.js";
-import { cafeMenu, cafePrice } from "./menu.js";
+import { menu as cafeMenu } from "./menu.js";
+import { order, textMenu } from "./order.js";
 
 const slimbot = new Slimbot(TG_TOKEN_BOT);
 const bot = {
@@ -72,17 +75,17 @@ const start = (msg) => {
   const { chat } = msg;
   const { id } = chat;
 
-  if (store.isProccessPoll()) {
+  if (store.isProcessPoll()) {
     bot.sendMsg(
       id,
-      `Ты куда торопишься? Дай отдохнуть от опроса id***${store.idPoll}***`
+      `Ты куда торопишься? Дай отдохнуть от опроса id***${store.getPoll()}***`
     );
     return;
   }
 
   const objPoll = {
     question: "Заказываем обед",
-    options: Object.values(cafeMenu),
+    options: Object.values(cafeMenu[INDEX_MENU].cafe.food),
     params: {
       is_anonymous: false,
       open_period: POLL_TIME_LIMIT,
@@ -101,9 +104,33 @@ const start = (msg) => {
       setTimeout(() => {
         store.saveOrder();
 
-        bot.sendMsg(id, store.getLastOrderText());
+        const lastOrder = store.getLastOrder();
 
-        console.log(store);
+        const textAllOrder = order.allOrderCombo(
+          cafeMenu[INDEX_MENU].cafe,
+          lastOrder
+        );
+
+        const textUserOrder = order.userOrderCombo(
+          cafeMenu[INDEX_MENU].cafe,
+          lastOrder
+        );
+
+        const textOrderPrice = order.userOrderPrice(
+          cafeMenu[INDEX_MENU].cafe,
+          lastOrder
+        );
+
+        const text = `***Ваши заказы***\n\n`
+          .concat(textUserOrder)
+          .concat("\n\n")
+          .concat("***Общий заказ***\n\n")
+          .concat(textAllOrder)
+          .concat("\n\n")
+          .concat("***Стоимость***\n\n")
+          .concat(textOrderPrice);
+
+        bot.sendMsg(id, text);
       }, (POLL_TIME_LIMIT + 1) * 1000);
     });
 };
@@ -128,20 +155,9 @@ const menu = (msg) => {
   const { chat } = msg;
   const { id } = chat;
 
-  const cafePriceMenu = cafePrice
-    .map((v) => {
-      let str = "";
-      str += v.combo.reduce((acc, v, i) => {
-        if (i > 0) acc += "+ ";
-        acc += `${cafeMenu[v]} `;
-        return acc;
-      }, "");
-      str += `= ***${v.price}***р`;
-      return str;
-    })
-    .join("\n");
-
-  const text = `***Оголодавший, вот меню*** \n\n${cafePriceMenu}`;
+  const text = `***Оголодавший, вот меню***\n\n${textMenu(
+    cafeMenu[INDEX_MENU].cafe
+  )}`;
 
   bot.sendMsg(id, text);
 };
@@ -167,15 +183,13 @@ slimbot.on("message", (msg) => {
   }
 });
 
-slimbot.on("poll", (msg) => {
-  console.log("poll");
-});
-
 slimbot.on("poll_answer", (msg) => {
   store.addAnswer({
-    name: `${msg.user.first_name} ${msg.user.last_name}`,
+    name: `${msg.user.first_name} ${msg.user.last_name ?? ""}`,
     username: msg.user.username,
-    options: msg.option_ids.map((i) => Object.keys(cafeMenu)[i]),
+    options: msg.option_ids.map(
+      (i) => Object.keys(cafeMenu[INDEX_MENU].cafe.food)[i]
+    ),
   });
 });
 
