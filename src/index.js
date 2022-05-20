@@ -106,6 +106,11 @@ const start = (msg) => {
 
         const lastOrder = store.getLastOrder();
 
+        if (lastOrder.users.length === 0) {
+          bot.sendMsg(id, "Заказов нет");
+          return;
+        }
+
         const textAllOrder = order.allOrderCombo(
           cafeMenu[INDEX_MENU].cafe,
           lastOrder
