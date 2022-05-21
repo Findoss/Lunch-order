@@ -5,10 +5,20 @@ export const objToStr = (obj) => {
 };
 
 export const getCommand = (str) => {
-  if (typeof str === "string") {
-    return str.replace("/", "").replace("@findoss_launch_order_bot", "");
+  let cmd = "";
+  const params = [];
+
+  const rawCmd = str
+    .replace("/", "")
+    .replace("@findoss_lunch_order_bot", "")
+    .split(" ");
+
+  cmd = rawCmd.shift();
+  if (rawCmd.length > 0) {
+    params.push(...rawCmd);
   }
-  return "";
+
+  return { cmd, params };
 };
 
 export const arraysEqual = (a1, a2) => {
