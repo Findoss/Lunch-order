@@ -60,7 +60,7 @@ export const store = {
 
   saveOrder() {
     this.orders.push({
-      id: this.poll.idPoll,
+      idPoll: this.poll.idPoll,
       idMenu: this.poll.idMenu,
       users: this.poll.pollAnswers,
       date: Date.now(),
