@@ -262,7 +262,5 @@ slimbot.on("poll_answer", (msg) => {
 });
 
 store.load();
-console.log(JSON.stringify(store, null, 2));
-
 slimbot.startPolling();
 // slimbot.stopPolling();

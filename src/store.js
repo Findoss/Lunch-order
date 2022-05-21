@@ -63,7 +63,7 @@ export const store = {
       id: this.poll.idPoll,
       idMenu: this.poll.idMenu,
       users: this.poll.pollAnswers,
-      data: Date.now(),
+      date: Date.now(),
     });
 
     this.clearOrder();
