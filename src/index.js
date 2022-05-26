@@ -251,14 +251,20 @@ slimbot.on("message", (msg) => {
 });
 
 slimbot.on("poll_answer", (msg) => {
-  console.log(store.poll.idMenu);
-  store.addAnswer({
-    name: `${msg.user.first_name} ${msg.user.last_name ?? ""}`,
-    username: msg.user.username,
-    options: msg.option_ids.map(
-      (i) => Object.keys(cafeMenu[store.poll.idMenu].cafe.food)[i]
-    ),
-  });
+  const { option_ids, user } = msg;
+  const { username, first_name, last_name } = user;
+
+  if (option_ids.length > 0) {
+    store.addAnswer({
+      name: `${first_name} ${last_name ?? ""}`,
+      username: username,
+      options: option_ids.map(
+        (i) => Object.keys(cafeMenu[store.poll.idMenu].cafe.food)[i]
+      ),
+    });
+  } else {
+    store.removeAnswer(username);
+  }
 });
 
 store.load();

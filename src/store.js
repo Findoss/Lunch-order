@@ -58,6 +58,12 @@ export const store = {
     this.poll.pollAnswers.push(payload);
   },
 
+  removeAnswer(username) {
+    this.poll.pollAnswers = this.poll.pollAnswers.filter(
+      (answer) => answer.username !== username
+    );
+  },
+
   saveOrder() {
     this.orders.push({
       idPoll: this.poll.idPoll,
