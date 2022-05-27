@@ -8,7 +8,7 @@ export const store = {
   config: {
     pollTimeLimit: 300,
     adminUsernames: [ADMIN_USERNAME],
-    saveFileds: ["config", "orders"],
+    saveFields: ["config", "orders"],
   },
   poll: {
     idPoll: null,
@@ -86,16 +86,20 @@ export const store = {
   },
 
   load() {
-    this.config.saveFileds.map((key) => {
-      if (db.has(key)) {
-        this[key] = JSON.parse(db.get(key));
-      }
-    });
+    if (this.config.saveFields.length > 0) {
+      this.config.saveFields.map((key) => {
+        if (db.has(key)) {
+          this[key] = JSON.parse(db.get(key));
+        }
+      });
+    }
   },
 
   save() {
-    this.config.saveFileds.map((key) => {
-      db.set(key, JSON.stringify(this[key]));
-    });
+    if (this.config.saveFields.length > 0) {
+      this.config.saveFields.map((key) => {
+        db.set(key, JSON.stringify(this[key]));
+      });
+    }
   },
 };
