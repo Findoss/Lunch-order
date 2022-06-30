@@ -156,6 +156,41 @@ const help = (msg) => {
   bot.sendMsg(id, helpText);
 };
 
+const hello = (msg) => {
+  const { chat, new_chat_member } = msg;
+  const { id } = chat;
+
+  const name =
+    new_chat_member !== undefined ? new_chat_member.first_name : "Михаил";
+
+  const helloText =
+    `Привет ***${name}***!\n` +
+    "В этом чате мы объединяемся покушать.\n" +
+    "Вместе заказать доставку или сходить в кафе/ресторан \n" +
+    "\n" +
+    "Обычно \n" +
+    "- Обед в ~13:00 \n" +
+    "- Чай в ~17:00 \n" +
+    "но ты можешь есть это когда тебе удобно \n" +
+    "Главное правило на кухне - ни слова о работе! \n" +
+    "\n" +
+    "Оксана Кузьменко` `+7(999)209-15-29\n" +
+    "___тиньк/райф___\n\n" +
+    "Максим Крупяев`   `+7(921)311-33-94\n" +
+    "___тиньк/райф___\n\n" +
+    "Тамара Колпакова` `+7(913)372-47-80\n" +
+    "___тиньк/альфа___\n\n" +
+    "Катя Красавцева`  `+7(963)342-91-82\n" +
+    "___райф/сбер___\n\n" +
+    "Сергей Гузиков`   `+7(906)242-20-00\n" +
+    "___альфа___\n\n" +
+    "Кирилл Дроздов`   `+7(981)156-91-37\n" +
+    "___тиньк___\n\n" +
+    "Никита Строганов` `+7(911)012-19-49\n" +
+    "___альфа___\n\n";
+  bot.sendMsg(id, helloText);
+};
+
 const menu = (msg, params) => {
   const { chat } = msg;
   const { id } = chat;
@@ -166,9 +201,7 @@ const menu = (msg, params) => {
     return;
   }
 
-  const text = `***Оголодавший, вот меню***\n\n${textMenu(
-    cafeMenu[idMenu].cafe
-  )}`;
+  const text = `***Mеню Манифика***\n\n${textMenu(cafeMenu[idMenu].cafe)}`;
 
   bot.sendMsg(id, text);
 };
@@ -226,6 +259,7 @@ const commands = {
   help,
   poll,
   start,
+  hello,
   menu,
   add_admin,
   remove_admin,
@@ -235,6 +269,12 @@ const commands = {
 slimbot.on("message", (msg) => {
   const username = msg.from.username;
   const rawCmd = msg.text ?? msg.caption;
+
+  if (msg.new_chat_member !== undefined) {
+    commands["hello"](msg);
+    return;
+  }
+
   const { cmd, params } = getCommand(rawCmd);
 
   if (
