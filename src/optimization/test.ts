@@ -43,7 +43,7 @@ const cafe = {
 
 const order1 = {
   idPoll: 5440775982577354000,
-  users: [
+  order: [
     {
       name: 'Никита Строганов',
       username: 'findoss',
@@ -59,6 +59,12 @@ const order1 = {
 } as Order;
 
 describe('optimization', () => {
+  test('not optimaze', () => {
+    const result = optimaze(cafe, order1);
+
+    expect(result).toEqual('');
+  });
+
   test('sup + salad', () => {
     const result = optimaze(cafe, order1);
 

@@ -17,10 +17,10 @@ export const textComboPrice = (
   return textCombo(food, combo).concat(' = ').concat(String(price));
 };
 
-export const textAllOrderCombo = ({ food }: Cafe, { users }: Order) => {
+export const textAllOrderCombo = ({ food }: Cafe, { order }: Order) => {
   const combos: Record<string, number> = {};
 
-  users.forEach((user) => {
+  order.forEach((user) => {
     const combo = user.options;
     const id = packIdCombo(combo);
 
@@ -39,8 +39,8 @@ export const textAllOrderCombo = ({ food }: Cafe, { users }: Order) => {
     .join('\n');
 };
 
-export const textUserOrderCombo = ({ food }: Cafe, { users }: Order) => {
-  return users
+export const textUserOrderCombo = ({ food }: Cafe, { order }: Order) => {
+  return order
     .map((user) => {
       return `${user.name} = ${textCombo(food, user.options)}`;
     })
@@ -59,8 +59,8 @@ const getPrice = (menu: Cafe['menu'], user: Answer) => {
   return combo.price;
 };
 
-export const textUserOrderPrice = ({ menu }: Cafe, { users }: Order) => {
-  return users
+export const textUserOrderPrice = ({ menu }: Cafe, { order }: Order) => {
+  return order
     .map((user) => `${user.name} = ${getPrice(menu, user)} ₽`)
     .join('\n');
 };

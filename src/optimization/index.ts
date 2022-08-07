@@ -25,12 +25,12 @@ const opt = {
         {
           name: 'Никита Строганов',
           username: 'findoss',
-          price: ,
+          price: 100,
         },
         {
           name: 'XXXASA',
           username: 'awwwwww',
-          price: ,
+          price: 520,
         },
       ],
       combo: [['sup'], ['salad']],
@@ -38,3 +38,8 @@ const opt = {
   ],
   date: 1659887655494,
 };
+
+// найти комбо
+// перенести в оптимизацию
+// перенести остатки
+// переписать вывод под оптимизацию
