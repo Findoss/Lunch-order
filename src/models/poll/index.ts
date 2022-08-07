@@ -37,4 +37,4 @@ export const selectPoll = () => pollAnswers.getState();
 persistState(pollTimeLimit);
 
 // watch
-pollAnswers.watch(console.log);
+// pollAnswers.watch(console.log);
