@@ -1,4 +1,4 @@
-export type Food = 'salad' & 'sup' & 'dish';
+export type Food = 'salad' | 'sup' | 'dish';
 
 export type Foods = Record<Food, string>;
 

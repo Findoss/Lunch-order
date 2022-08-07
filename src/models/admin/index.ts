@@ -1,6 +1,5 @@
 import { createStore, createEvent } from 'effector';
-import { persist } from 'effector-storage';
-import { adapter } from '../../services/index';
+import { persistState } from '../../services';
 
 import type { UserName } from '../types';
 
@@ -32,7 +31,7 @@ export const selectHasAdmin = (userName: UserName) =>
   store.getState().includes(userName);
 
 // save
-persist({ store, adapter });
+persistState(store);
 
 // watch
 // store.watch(console.log);

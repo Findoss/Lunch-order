@@ -1,6 +1,5 @@
 import { createStore, createEvent } from 'effector';
-import { persist } from 'effector-storage';
-import { adapter } from '../../services/index';
+import { persistState } from '../../services';
 
 import type { Cafe } from './types';
 
@@ -9,15 +8,20 @@ export const storeSetCafe = createEvent<Cafe>('set');
 
 // store
 export const store = createStore<Cafe>(
-  { food: { sup: 'sup' }, menu: [], optimization: [] },
+  {
+    food: { sup: 'dis', salad: 'salad', dish: 'dish' },
+    menu: [],
+    optimization: [],
+  },
   { name: 'cafe' }
-).on(storeSetCafe, (state, cafe: Cafe) => cafe);
+).on(storeSetCafe, (state, cafe) => cafe);
 
 // selectors
 export const selectCafe = () => store.getState();
+export const selectFoodValue: () => string[] = () =>
+  Object.values(store.getState().food);
+export const selectFoodKeys: () => string[] = () =>
+  Object.keys(store.getState().food);
 
 // save
-persist({ store, adapter });
-
-// watch
-// store.watch(console.log);
+persistState(store);

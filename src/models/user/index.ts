@@ -1,6 +1,6 @@
 import { createStore, createEvent } from 'effector';
-import { persist } from 'effector-storage';
-import { adapter } from '../../services/index';
+
+import { persistState } from '../../services/index';
 
 import type { User } from './types';
 
@@ -17,7 +17,4 @@ export const store = createStore<User[]>([], { name: 'users' })
 export const selectAllUsers = () => store.getState();
 
 // save
-persist({ store, adapter });
-
-// watch
-// store.watch(console.log);
+persistState(store);
