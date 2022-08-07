@@ -21,7 +21,7 @@ bot.command('test', help);
 bot.command('test_hello', hello);
 
 // info
-bot.on('new_chat_members', hello); // fix types
+bot.on('new_chat_members', hello); // todo fix types
 bot.command('menu', menu);
 bot.command('help', help);
 
@@ -33,10 +33,10 @@ bot.command('list_admin', isAdmin, listAdmin);
 // poll
 bot.command('set_poll_time', isAdmin, isParams(['time(seconds)']), setPollTime);
 bot.command('start', isAdmin, startPoll);
-bot.on('poll_answer', answerPoll); // fix types
+bot.on('poll_answer', answerPoll); // todo fix types
 
 // update config bot
-bot.on('document', isAdmin, isParams(['part_state']), updateStore); // fix types
+bot.on('document', isAdmin, isParams(['part_state']), updateStore); // todo fix types
 
 bot.launch();
 process.once('SIGINT', () => bot.stop('SIGINT'));
