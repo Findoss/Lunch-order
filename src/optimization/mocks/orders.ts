@@ -4,22 +4,19 @@ export const orders1: Order[] = [
   {
     name: 'Вася',
     username: 'vasa',
-    userCombo: ['dish'],
-    keyCombo: 'dish',
+    keys: ['dish'],
     price: 200,
   },
   {
     name: 'Алена',
     username: 'alena',
-    userCombo: ['sup'],
-    keyCombo: 'sup',
+    keys: ['sup'],
     price: 130,
   },
   {
     name: 'Рома',
     username: 'roma',
-    userCombo: ['sup'],
-    keyCombo: 'sup',
+    keys: ['sup'],
     price: 130,
   },
 ];

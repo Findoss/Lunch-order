@@ -13,14 +13,14 @@ export const enrichmentCombo = (combos: Order[][], { menu }: Cafe) => {
   return combos
     .map((combo) => {
       const comboLength = combo.length;
-      const key = getKey(combo);
-      const cost = getCost(key, menu);
+      const keys = getKey(combo);
+      const cost = getCost(keys, menu);
       const priceCombo = getMenuPrice(combo);
-      const profitCombo = getProfit(key, priceCombo, menu);
+      const profitCombo = getProfit(keys, priceCombo, menu);
       const profitUser = getProfitUser(comboLength, profitCombo);
 
       return {
-        key,
+        keys,
         combo: combo.map((userCombo) => ({
           ...userCombo,
           profit: profitUser,

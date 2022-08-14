@@ -11,8 +11,7 @@ export type LogOrder = {
 export type Order = {
   name: UserName;
   username: UserName;
-  userCombo: Food[];
-  keyCombo: string;
+  keys: Food[];
   price: number;
   profit?: number;
   cost?: number;
@@ -20,7 +19,7 @@ export type Order = {
 
 export type OrderCombo = {
   combo: Order[];
-  key: string;
+  keys: Food[];
   price: number;
   profit: number;
   cost: number;

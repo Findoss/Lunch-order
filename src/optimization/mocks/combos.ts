@@ -5,8 +5,7 @@ export const rawCombos1: Order[][] = [
     {
       name: 'Вася',
       username: 'vasa',
-      userCombo: ['dish'],
-      keyCombo: 'dish',
+      keys: ['dish'],
       price: 200,
     },
   ],
@@ -14,8 +13,7 @@ export const rawCombos1: Order[][] = [
     {
       name: 'Алена',
       username: 'alena',
-      userCombo: ['sup'],
-      keyCombo: 'sup',
+      keys: ['sup'],
       price: 130,
     },
   ],
@@ -23,8 +21,7 @@ export const rawCombos1: Order[][] = [
     {
       name: 'Рома',
       username: 'roma',
-      userCombo: ['sup'],
-      keyCombo: 'sup',
+      keys: ['sup'],
       price: 130,
     },
   ],
@@ -32,15 +29,13 @@ export const rawCombos1: Order[][] = [
     {
       name: 'Вася',
       username: 'vasa',
-      userCombo: ['dish'],
-      keyCombo: 'dish',
+      keys: ['dish'],
       price: 200,
     },
     {
       name: 'Алена',
       username: 'alena',
-      userCombo: ['sup'],
-      keyCombo: 'sup',
+      keys: ['sup'],
       price: 130,
     },
   ],
@@ -48,15 +43,13 @@ export const rawCombos1: Order[][] = [
     {
       name: 'Вася',
       username: 'vasa',
-      userCombo: ['dish'],
-      keyCombo: 'dish',
+      keys: ['dish'],
       price: 200,
     },
     {
       name: 'Рома',
       username: 'roma',
-      userCombo: ['sup'],
-      keyCombo: 'sup',
+      keys: ['sup'],
       price: 130,
     },
   ],
@@ -64,15 +57,15 @@ export const rawCombos1: Order[][] = [
     {
       name: 'Алена',
       username: 'alena',
-      userCombo: ['sup'],
-      keyCombo: 'sup',
+      keys: ['sup'],
+
       price: 130,
     },
     {
       name: 'Рома',
       username: 'roma',
-      userCombo: ['sup'],
-      keyCombo: 'sup',
+      keys: ['sup'],
+
       price: 130,
     },
   ],
@@ -80,22 +73,19 @@ export const rawCombos1: Order[][] = [
     {
       name: 'Вася',
       username: 'vasa',
-      userCombo: ['dish'],
-      keyCombo: 'dish',
+      keys: ['dish'],
       price: 200,
     },
     {
       name: 'Алена',
       username: 'alena',
-      userCombo: ['sup'],
-      keyCombo: 'sup',
+      keys: ['sup'],
       price: 130,
     },
     {
       name: 'Рома',
       username: 'roma',
-      userCombo: ['sup'],
-      keyCombo: 'sup',
+      keys: ['sup'],
       price: 130,
     },
   ],
@@ -103,13 +93,12 @@ export const rawCombos1: Order[][] = [
 
 export const fullCombos1: OrderCombo[] = [
   {
-    key: 'dish_sup',
+    keys: ['dish', 'sup'],
     combo: [
       {
         name: 'Вася',
         username: 'vasa',
-        userCombo: ['dish'],
-        keyCombo: 'dish',
+        keys: ['dish'],
         price: 200,
         profit: 25,
         cost: 175,
@@ -117,8 +106,7 @@ export const fullCombos1: OrderCombo[] = [
       {
         name: 'Алена',
         username: 'alena',
-        userCombo: ['sup'],
-        keyCombo: 'sup',
+        keys: ['sup'],
         price: 130,
         profit: 25,
         cost: 105,
@@ -129,13 +117,12 @@ export const fullCombos1: OrderCombo[] = [
     cost: 280,
   },
   {
-    key: 'dish_sup',
+    keys: ['dish', 'sup'],
     combo: [
       {
         name: 'Вася',
         username: 'vasa',
-        userCombo: ['dish'],
-        keyCombo: 'dish',
+        keys: ['dish'],
         price: 200,
         profit: 25,
         cost: 175,
@@ -143,8 +130,7 @@ export const fullCombos1: OrderCombo[] = [
       {
         name: 'Рома',
         username: 'roma',
-        userCombo: ['sup'],
-        keyCombo: 'sup',
+        keys: ['sup'],
         price: 130,
         profit: 25,
         cost: 105,
@@ -155,13 +141,12 @@ export const fullCombos1: OrderCombo[] = [
     cost: 280,
   },
   {
-    key: 'dish',
+    keys: ['dish'],
     combo: [
       {
         name: 'Вася',
         username: 'vasa',
-        userCombo: ['dish'],
-        keyCombo: 'dish',
+        keys: ['dish'],
         price: 200,
         profit: 0,
         cost: 200,
@@ -172,13 +157,12 @@ export const fullCombos1: OrderCombo[] = [
     cost: 200,
   },
   {
-    key: 'sup',
+    keys: ['sup'],
     combo: [
       {
         name: 'Алена',
         username: 'alena',
-        userCombo: ['sup'],
-        keyCombo: 'sup',
+        keys: ['sup'],
         price: 130,
         profit: 0,
         cost: 130,
@@ -189,13 +173,12 @@ export const fullCombos1: OrderCombo[] = [
     cost: 130,
   },
   {
-    key: 'sup',
+    keys: ['sup'],
     combo: [
       {
         name: 'Рома',
         username: 'roma',
-        userCombo: ['sup'],
-        keyCombo: 'sup',
+        keys: ['sup'],
         price: 130,
         profit: 0,
         cost: 130,

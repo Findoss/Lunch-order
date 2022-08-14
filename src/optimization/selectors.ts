@@ -1,34 +1,26 @@
 import type { Cafe, Food } from '../models/cafe/types';
 import type { Order } from '../models/order/types';
 
-import { packIdCombo, unPackIdCombo } from '../format/utils/id';
 import { arraysEqual } from '../utils/array-equal';
 
-// TODO
-export const getComboInMenu = (userCombo: Food[], { menu }: Cafe) =>
+export const getComboInMenu = (keys: Food[], menu: Cafe['menu']) =>
   menu.find(({ combo }) => {
-    return arraysEqual(combo, userCombo);
+    return arraysEqual(combo, keys);
   });
 
 export const getMenuPrice = (combo: Order[]) =>
   combo.reduce((acc, { price }) => (acc += price), 0);
 
-export const getKey = (combo: Order[]) =>
-  packIdCombo(combo.map(({ keyCombo }) => keyCombo));
+export const getKey = (combo: Order[]) => combo.map((v) => v.keys).flat(1);
 
-export const getCost = (key: string, menu: Cafe['menu']) => {
-  const userCombo = unPackIdCombo(key);
-
-  const menuCombo =
-    menu.find((combo) => {
-      return arraysEqual(combo.combo, userCombo);
-    })?.price ?? null;
+export const getCost = (keys: Food[], menu: Cafe['menu']) => {
+  const menuCombo = getComboInMenu(keys, menu)?.price ?? null;
 
   return menuCombo;
 };
 
-export const getProfit = (key: string, price: number, menu: Cafe['menu']) => {
-  const menuCombo = getCost(key, menu);
+export const getProfit = (keys: Food[], price: number, menu: Cafe['menu']) => {
+  const menuCombo = getCost(keys, menu);
 
   return price - (menuCombo ?? 0);
 };
