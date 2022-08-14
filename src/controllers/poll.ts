@@ -58,17 +58,22 @@ export const startPoll = (ctx: ContextTelegraf) => {
       const TIME_WAIT = (selectPollTimeLimit() + 1) * 1000;
 
       setTimeout(() => {
-        const order = { idPoll: idPoll, users: selectPoll(), date: Date.now() };
+        const logOrder = {
+          idPoll: idPoll,
+          users: selectPoll(),
+          date: Date.now(),
+        };
         const cafe = selectCafe();
 
-        storeArhiveOrder(order);
+        storeArhiveOrder(logOrder);
         storeStopPoll();
 
-        if (order.users.length === 0) {
+        if (logOrder.users.length === 0) {
           ctx.reply('Заказов нет');
           return;
         }
 
+        const order = logOrder;
         ctx.replyWithMarkdown(textOrder(cafe, order));
       }, TIME_WAIT);
     });

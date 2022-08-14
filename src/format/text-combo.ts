@@ -1,6 +1,6 @@
 import { textFood } from './text-food';
 import { packIdCombo, unPackIdCombo } from './utils/id';
-import { arraysEqual } from './utils/array-equal';
+import { arraysEqualOrderEl } from '../utils/array-equal';
 
 import type { Cafe, Combo, Foods, Food } from '../models/cafe/types';
 import type { Order } from '../models/order/types';
@@ -51,7 +51,7 @@ const getPrice = (menu: Cafe['menu'], user: Answer) => {
   if (menu === undefined) return 0;
 
   const combo = menu.find((combo) => {
-    return arraysEqual(combo.combo, user.options);
+    return arraysEqualOrderEl(combo.combo, user.options);
   });
 
   if (combo === undefined) return 0;

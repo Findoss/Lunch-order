@@ -1,6 +1,6 @@
 import { Food } from '../../models/cafe/types';
 
-export const packIdCombo = (arr: Food[]) => {
+export const packIdCombo = (arr: Food[] | string[]) => {
   return arr.join('_');
 };
 

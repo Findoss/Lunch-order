@@ -1,24 +1,40 @@
-import { optimization, findOptimalCombo } from './index';
+import { combine } from './combine';
+import { enrichmentCombo } from './enrichment-combine';
+import { maxComboEl } from './utils';
 
-import { cafe, order1 } from './mocks';
+import { cafe } from './mocks/cafe';
+import { orders1 } from './mocks/orders';
+import { rawCombos1, fullCombos1 } from './mocks/combos';
 
 describe('optimization', () => {
-  test('findOptimalCombo', () => {
-    const result = findOptimalCombo(cafe);
-    console.log(result);
+  test('combine', () => {
+    const arr = orders1;
+    const max = maxComboEl(cafe.menu);
 
-    // expect(result).toEqual('');
+    const result = [];
+    for (let i = 1; i <= max; i++) {
+      result.push(...combine(arr, i));
+    }
+
+    expect(result).toEqual(rawCombos1);
   });
 
-  // test('sup + salad', () => {
-  //   const result = optimaze(cafe, order1);
+  test('enrichmentCombo', () => {
+    const arr = rawCombos1;
+    const menu = cafe;
 
-  //   expect(result).toEqual('');
-  // });
+    const result = enrichmentCombo(arr, menu);
 
-  // test('sup + salad + dish', () => {
-  //   const result = optimaze(cafe, order1);
+    expect(result).toEqual(fullCombos1);
+  });
 
-  //   expect(result).toEqual('');
-  // });
+  test('enrichmentCombo rawOrder', () => {
+    const arr = orders1.map((v) => [v]);
+    const menu = cafe;
+
+    const result = enrichmentCombo(arr, menu);
+    console.log(JSON.stringify(result, null, 2));
+
+    // expect(result).toEqual(filteredCombos1);
+  });
 });

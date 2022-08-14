@@ -1,7 +1,7 @@
 import { Food } from '../cafe/types';
 import { UserName } from '../types';
 
-export type Answer = {
+export type OrderAnswer = {
   name: string;
   username: UserName;
   options: Food[];

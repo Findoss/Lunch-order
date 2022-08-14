@@ -1,7 +1,6 @@
-import { Cafe } from '../models/cafe/types';
-import { Order } from '../models/order/types';
+import type { Cafe } from '../../models/cafe/types';
 
-export const cafe = {
+export const cafe: Cafe = {
   food: {
     salad: 'Салат',
     sup: 'Суп',
@@ -38,21 +37,4 @@ export const cafe = {
     },
   ],
   optimization: [],
-} as Cafe;
-
-export const order1 = {
-  idPoll: 5440775982577354000,
-  order: [
-    {
-      name: 'Никита Строганов',
-      username: 'findoss',
-      options: ['salad'],
-    },
-    {
-      name: 'XXXASA',
-      username: 'findoss',
-      options: ['sup'],
-    },
-  ],
-  date: 1659887655494,
-} as Order;
+};

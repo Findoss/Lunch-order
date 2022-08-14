@@ -1,15 +1,15 @@
 import { createStore, createEvent } from 'effector';
 import { persistState } from '../../services/index';
 
-import type { Order } from './types';
+import type { LogOrder } from './types';
 
 // events
-export const storeArhiveOrder = createEvent<Order>('add');
+export const storeArhiveOrder = createEvent<LogOrder>('add');
 
 // store
-export const store = createStore<Order[]>([], { name: 'orders' }).on(
+export const store = createStore<LogOrder[]>([], { name: 'orders' }).on(
   storeArhiveOrder,
-  (state, order: Order) => [...state, order]
+  (state, order: LogOrder) => [...state, order]
 );
 
 // selectors
