@@ -1,13 +1,13 @@
-import { ADMIN_USERNAME } from '../config';
+import { ADMIN_USERNAME } from '../../config';
 
 import {
   storeAddAdmin,
   selectHasAdmin,
   storeRemoveAdmin,
   selectAdminList,
-} from '../models/admin';
+} from '../../models/admin';
 
-import type { ContextTelegraf } from '../telegram/types';
+import type { ContextTelegraf } from '../../telegram/types';
 
 export const addAdmin = (ctx: ContextTelegraf) => {
   const [rawUserName] = ctx.commadnParams;

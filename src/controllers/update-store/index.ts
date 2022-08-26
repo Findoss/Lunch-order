@@ -1,5 +1,5 @@
-import { setUserList } from './user';
-import { setCafe } from './cafe';
+import { setUserList } from '../user';
+import { setCafe } from '../cafe';
 
 export const updateStore = (ctx: any) => {
   const [partState] = ctx.commadnParams;

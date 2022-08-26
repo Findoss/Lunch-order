@@ -1,5 +1,5 @@
-import { selectAllUsers } from '../models/user';
-import { textUserContacts } from '../format/text-user-contacts';
+import { selectAllUsers } from '../../models/user';
+import { textUserContacts } from './text-user-contact';
 
 export const hello = (ctx: any) => {
   let name = 'Михаил';

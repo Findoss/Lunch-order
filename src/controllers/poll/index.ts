@@ -1,5 +1,7 @@
-import { storeArhiveOrder } from '../models/order';
-import { selectCafe, selectFoodKeys, selectFoodValue } from '../models/cafe';
+import type { ContextTelegraf } from '../../telegram/types';
+
+import { storeArhiveOrder } from '../../models/order';
+import { selectCafe, selectFoodKeys, selectFoodValue } from '../../models/cafe';
 import {
   storeSetPollTimeLimit,
   selectIdPoll,
@@ -10,10 +12,9 @@ import {
   storeRemoveAnswer,
   storeAddAnswer,
   selectPoll,
-} from '../models/poll';
-import { textOrder } from '../format/text-order';
+} from '../../models/poll';
 
-import type { ContextTelegraf } from '../telegram/types';
+import { REPORT_ID_CHENAL } from '../../config';
 
 export const setPollTime = (ctx: ContextTelegraf) => {
   const [time] = ctx.commadnParams;
@@ -65,7 +66,7 @@ export const startPoll = (ctx: ContextTelegraf) => {
         };
         const cafe = selectCafe();
 
-        storeArhiveOrder(logOrder);
+        // storeArhiveOrder(logOrder);
         storeStopPoll();
 
         if (logOrder.users.length === 0) {
@@ -74,7 +75,9 @@ export const startPoll = (ctx: ContextTelegraf) => {
         }
 
         const order = logOrder;
-        ctx.replyWithMarkdown(textOrder(cafe, order));
+
+        ctx.telegram.sendMessage(REPORT_ID_CHENAL, `report`);
+        // ctx.replyWithMarkdown(textOrder(cafe, order));
       }, TIME_WAIT);
     });
 };

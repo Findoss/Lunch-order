@@ -1,5 +1,5 @@
-import { Food } from '../cafe/types';
-import { UserName } from '../types';
+import type { Food } from '../cafe/types';
+import type { UserName } from '../types';
 
 export type OrderAnswer = {
   name: string;

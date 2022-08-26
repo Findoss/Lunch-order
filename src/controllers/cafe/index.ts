@@ -1,4 +1,4 @@
-import { storeSetCafe } from '../models/cafe';
+import { storeSetCafe } from '../../models/cafe';
 
 export const setCafe = async (ctx: any) => {
   const fileMeta = await ctx.telegram.getFileLink(ctx.message.document.file_id);

@@ -1,4 +1,4 @@
-import type { ContextTelegraf } from '../telegram/types';
+import type { ContextTelegraf } from '../../telegram/types';
 
 export const help = (ctx: ContextTelegraf) => {
   const text =

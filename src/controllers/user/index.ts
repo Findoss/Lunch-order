@@ -1,4 +1,4 @@
-import { storeSetUsers } from '../models/user';
+import { storeSetUsers } from '../../models/user';
 
 export const setUserList = async (ctx: any) => {
   const fileMeta = await ctx.telegram.getFileLink(ctx.message.document.file_id);
