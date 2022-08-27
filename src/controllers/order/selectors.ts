@@ -1,7 +1,7 @@
-import type { Cafe, Food } from '../models/cafe/types';
-import type { Order } from '../models/order/types';
+import type { Cafe, Food } from '../../models/cafe/types';
+import type { Order, OrderCombo } from '../../models/order/types';
 
-import { arraysEqual } from '../utils/array-equal';
+import { arraysEqual } from '../../utils/array-equal';
 
 export const getComboInMenu = (keys: Food[], menu: Cafe['menu']) =>
   menu.find(({ combo }) => {
@@ -27,4 +27,8 @@ export const getProfit = (keys: Food[], price: number, menu: Cafe['menu']) => {
 
 export const getProfitUser = (comboLength: number, profitCombo: number) => {
   return Math.floor(profitCombo / comboLength);
+};
+
+export const getOnlyUserCombo = (combos: OrderCombo[]) => {
+  return combos.map((combo) => combo.combo).flat(1);
 };

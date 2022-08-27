@@ -1,6 +1,10 @@
 import type { ContextTelegraf } from '../../telegram/types';
 
-import { storeArhiveOrder } from '../../models/order';
+import { REPORT_ID_CHENAL } from '../../config';
+
+import { createOrder } from '../../optimization/';
+import { textOrder, textReportOrder } from '../order/text';
+
 import { selectCafe, selectFoodKeys, selectFoodValue } from '../../models/cafe';
 import {
   storeSetPollTimeLimit,
@@ -13,8 +17,7 @@ import {
   storeAddAnswer,
   selectPoll,
 } from '../../models/poll';
-
-import { REPORT_ID_CHENAL } from '../../config';
+import { storeArhiveOrder } from '../../models/order';
 
 export const setPollTime = (ctx: ContextTelegraf) => {
   const [time] = ctx.commadnParams;
@@ -59,25 +62,37 @@ export const startPoll = (ctx: ContextTelegraf) => {
       const TIME_WAIT = (selectPollTimeLimit() + 1) * 1000;
 
       setTimeout(() => {
-        const logOrder = {
-          idPoll: idPoll,
-          users: selectPoll(),
-          date: Date.now(),
-        };
         const cafe = selectCafe();
+        const poll = selectPoll();
 
-        // storeArhiveOrder(logOrder);
+        // закрываем опрос
         storeStopPoll();
 
-        if (logOrder.users.length === 0) {
+        if (poll.length === 0) {
           ctx.reply('Заказов нет');
           return;
         }
 
-        const order = logOrder;
+        // формируем заказ из опроса
+        const { originalOrder, optimizitionOrder } = createOrder(cafe, poll);
 
-        ctx.telegram.sendMessage(REPORT_ID_CHENAL, `report`);
-        // ctx.replyWithMarkdown(textOrder(cafe, order));
+        // логируем
+
+        storeArhiveOrder({
+          idPoll: idPoll,
+          order: optimizitionOrder,
+          date: Date.now(),
+        });
+
+        // const order = logOrder;
+
+        // отправляем отчет оптимизации
+        ctx.telegram.sendMessage(
+          REPORT_ID_CHENAL,
+          textReportOrder(optimizitionOrder, cafe)
+        );
+        // отправляем результат
+        ctx.replyWithMarkdown(textOrder(originalOrder, cafe));
       }, TIME_WAIT);
     });
 };
@@ -90,7 +105,7 @@ export const answerPoll = (ctx: any) => {
     storeAddAnswer({
       name: `${first_name} ${last_name ?? ''}`,
       username: username,
-      options: option_ids.map((i: number) => selectFoodKeys()[i]),
+      keys: option_ids.map((i: number) => selectFoodKeys()[i]),
     });
   } else {
     storeRemoveAnswer(username);

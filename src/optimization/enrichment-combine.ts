@@ -1,4 +1,4 @@
-import type { Order } from '../models/order/types';
+import type { Order, OrderCombo } from '../models/order/types';
 import type { Cafe } from '../models/cafe/types';
 
 import {
@@ -7,9 +7,12 @@ import {
   getMenuPrice,
   getProfit,
   getProfitUser,
-} from './selectors';
+} from '../controllers/order/selectors';
 
-export const enrichmentCombo = (combos: Order[][], { menu }: Cafe) => {
+export const enrichmentCombo = (
+  combos: Order[][],
+  { menu }: Cafe
+): OrderCombo[] => {
   return combos
     .map((combo) => {
       const comboLength = combo.length;
@@ -32,5 +35,5 @@ export const enrichmentCombo = (combos: Order[][], { menu }: Cafe) => {
       };
     })
     .filter((v) => v.cost !== null)
-    .sort((a, b) => b.profit - a.profit);
+    .sort((a, b) => b.profit - a.profit) as OrderCombo[];
 };

@@ -4,5 +4,5 @@ import type { UserName } from '../types';
 export type OrderAnswer = {
   name: string;
   username: UserName;
-  options: Food[];
+  keys: Food[];
 };
