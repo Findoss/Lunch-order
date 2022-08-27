@@ -1,4 +1,4 @@
-import type { ContextTelegraf } from '../../telegram/types';
+import type { ContextTelegraf } from '../../services/telegram/types';
 
 import { selectCafe } from '../../models/cafe';
 import { textMenu } from '../order/text';

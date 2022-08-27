@@ -1,6 +1,6 @@
 import './config/env';
 
-import { bot } from './telegram';
+import { bot } from './services/telegram';
 
 import { isAdmin, timeLog, isParams } from './middlewares';
 

@@ -1,18 +1,18 @@
-import { combine } from './combine';
-import { enrichmentCombo } from './enrichment-combine';
-import { maxComboEl } from './utils';
+import { combine } from '../src/services/optimization/combine';
+import { enrichmentCombo } from '../src/services/optimization/enrichment';
+import { maxComboEl } from '../src/services/optimization/utils';
 
 import { cafe } from './mocks/cafe';
 import { orders1 } from './mocks/orders';
 import { rawCombos1, fullCombos1 } from './mocks/combos';
-import { getUserFood } from '../controllers/order/selectors';
+import { getUserFood } from '../src/controllers/order/selectors';
 import {
   textComboOriginalOrder,
   textUserFood,
   textUserOrderCost,
   textComboOptimazeOrder,
   textReportOrder,
-} from '../controllers/order/text';
+} from '../src/controllers/order/text';
 
 describe('optimization', () => {
   test('combine', () => {

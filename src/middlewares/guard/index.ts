@@ -1,7 +1,7 @@
 import { ADMIN_USERNAME } from '../../config';
 import { selectHasAdmin, selectAdminList } from '../../models/admin';
 
-import type { ContextTelegraf } from '../../telegram/types';
+import type { ContextTelegraf } from '../../services/telegram/types';
 
 export const isAdmin = async (
   ctx: ContextTelegraf,

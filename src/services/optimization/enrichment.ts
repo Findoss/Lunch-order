@@ -1,5 +1,5 @@
-import type { Order, OrderCombo } from '../models/order/types';
-import type { Cafe } from '../models/cafe/types';
+import type { Order, OrderCombo } from '../../models/order/types';
+import type { Cafe } from '../../models/cafe/types';
 
 import {
   getKey,
@@ -7,7 +7,7 @@ import {
   getMenuPrice,
   getProfit,
   getProfitUser,
-} from '../controllers/order/selectors';
+} from '../../controllers/order/selectors';
 
 export const enrichmentCombo = (
   combos: Order[][],

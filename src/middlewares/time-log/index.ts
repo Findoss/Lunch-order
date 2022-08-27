@@ -1,4 +1,4 @@
-import { ContextTelegraf } from '../../telegram/types';
+import { ContextTelegraf } from '../../services/telegram/types';
 
 export const timeLog = async (
   ctx: ContextTelegraf,

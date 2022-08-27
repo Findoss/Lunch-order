@@ -1,5 +1,5 @@
 import { Telegraf } from 'telegraf';
-import { TG_TOKEN_BOT } from '../config';
+import { TG_TOKEN_BOT } from '../../config';
 
 import type { ContextTelegraf } from './types';
 

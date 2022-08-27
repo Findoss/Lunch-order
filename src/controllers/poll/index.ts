@@ -1,8 +1,8 @@
-import type { ContextTelegraf } from '../../telegram/types';
+import type { ContextTelegraf } from '../../services/telegram/types';
 
 import { REPORT_ID_CHENAL } from '../../config';
 
-import { createOrder } from '../../optimization/';
+import { createOrder } from '../../services/optimization';
 import { textOrder, textReportOrder } from '../order/text';
 
 import { selectCafe, selectFoodKeys, selectFoodValue } from '../../models/cafe';

@@ -1,4 +1,4 @@
-import type { OrderCombo, Order } from '../../models/order/types';
+import type { OrderCombo, Order } from '../../src/models/order/types';
 
 export const rawCombos1: Order[][] = [
   [
