@@ -13,6 +13,7 @@
 |                  |        |                        |                                                                          |
 | `/start`         | admin  | -                      | запускает опрос                                                          |
 | `/set_poll_time` | admin  | _number_ `<time>`      | устанавливает время для опроса в секундах (от 10 до 600 сек)             |
+| `/stats`         | admin  | -                      | статистика экономии за последний месяц                                   |
 |                  |        |                        |                                                                          |
 | `/add_admin`     | admin  | _string_ `<@username>` | добавляет админа                                                         |
 | `/add_remove`    | admin  | _string_ `<@username>` | удаляет админа                                                           |
