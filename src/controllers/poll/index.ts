@@ -87,11 +87,13 @@ export const startPoll = (ctx: ContextTelegraf) => {
         // const order = logOrder;
 
         // отправляем отчет оптимизации
-        ctx.telegram.sendMessage(
-          REPORT_ID_CHENAL,
-          textReportOrder(optimizitionOrder, cafe)
-        );
+        // ctx.telegram.sendMessage(
+        //   REPORT_ID_CHENAL,
+        //   textReportOrder(optimizitionOrder, cafe)
+        // );
         // отправляем результат
+        console.log(originalOrder);
+
         ctx.replyWithMarkdown(textOrder(originalOrder, cafe));
       }, TIME_WAIT);
     });

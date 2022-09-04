@@ -12,7 +12,7 @@ export const storeAddAnswer = createEvent<OrderAnswer>('add');
 export const storeRemoveAnswer = createEvent<UserName>('remove');
 
 // store
-export const pollTimeLimit = createStore<number>(300, {
+export const pollTimeLimit = createStore<number>(10, {
   name: 'pollTimeLimit',
 }).on(storeSetPollTimeLimit, (state, seconds: number) => seconds);
 

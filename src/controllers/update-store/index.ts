@@ -1,4 +1,4 @@
-import { setUserList } from '../user/user';
+import { setUserList } from '../user';
 import { setCafe } from '../cafe';
 
 export const updateStore = (ctx: any) => {
