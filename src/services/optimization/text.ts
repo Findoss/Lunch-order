@@ -87,16 +87,35 @@ export const textAllCost = (combos: OrderCombo[]) => {
 
 export const textOrder = (combos: OrderCombo[], cafe: Cafe) => {
   const text = [
-    'Ваши заказы \n\n',
+    '**Ваши заказы** \n\n',
     textUserFood(combos, cafe),
     '\n\n',
-    'Общий заказ \n\n',
+    '**Общий заказ** \n\n',
     textComboOriginalOrder(combos, cafe),
     '\n\n',
-    'Итог ',
+    '**Итог** ',
     textAllPrice(combos) + 'p',
     '\n\n',
     textUserOrderPrice(combos),
+  ].join('');
+
+  return text;
+};
+
+export const textOrderOptimization = (combos: OrderCombo[], cafe: Cafe) => {
+  const profit = textAllPrice(combos) - textAllCost(combos);
+  const text = [
+    '**Ваши заказы** \n\n',
+    textUserFood(combos, cafe),
+    '\n\n',
+    '**Общий заказ** \n\n',
+    textComboOptimazeOrder(combos, cafe),
+    '\n\n',
+    '**Итог** ',
+    textAllCost(combos) + 'p',
+    profit ? ` (выгода ${profit}p)` : '',
+    '\n\n',
+    textUserOrderCost(combos),
   ].join('');
 
   return text;

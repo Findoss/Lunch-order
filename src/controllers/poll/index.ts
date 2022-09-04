@@ -3,7 +3,11 @@ import type { ContextTelegraf } from '../../services/telegram/types';
 import { REPORT_ID_CHENAL } from '../../config';
 
 import { createOrder } from '../../services/optimization';
-import { textOrder, textReportOrder } from '../../services/optimization/text';
+import {
+  textOrder,
+  textReportOrder,
+  textOrderOptimization,
+} from '../../services/optimization/text';
 
 import { selectCafe, selectFoodKeys, selectFoodValue } from '../../models/cafe';
 import {
@@ -84,13 +88,13 @@ export const startPoll = (ctx: ContextTelegraf) => {
         });
 
         // отправляем отчет оптимизации
-        ctx.telegram.sendMessage(
-          REPORT_ID_CHENAL,
-          textReportOrder(optimizitionOrder, cafe)
-        );
+        // ctx.telegram.sendMessage(
+        //   REPORT_ID_CHENAL,
+        //   textReportOrder(optimizitionOrder, cafe)
+        // );
 
         // отправляем результат
-        ctx.replyWithMarkdown(textOrder(originalOrder, cafe));
+        ctx.replyWithMarkdown(textOrderOptimization(optimizitionOrder, cafe));
       }, TIME_WAIT);
     });
 };
