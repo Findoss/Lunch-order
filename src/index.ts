@@ -8,6 +8,7 @@ import { menu } from './controllers/menu';
 import { users } from './controllers/user';
 import { help } from './controllers/help';
 import { hello } from './controllers/hello';
+import { stats } from './controllers/stats';
 import { updateStore } from './controllers/update-store';
 import { addAdmin, removeAdmin, listAdmin } from './controllers/admin';
 import { setPollTime, startPoll, answerPoll } from './controllers/poll';
@@ -31,6 +32,7 @@ bot.command('help', help);
 bot.command('add_admin', isAdmin, isParams(['username']), addAdmin);
 bot.command('remove_admin', isAdmin, isParams(['username']), removeAdmin);
 bot.command('admins', isAdmin, listAdmin);
+bot.command('stats', isAdmin, stats);
 
 // poll
 bot.command('set_poll_time', isAdmin, isParams(['time(seconds)']), setPollTime);

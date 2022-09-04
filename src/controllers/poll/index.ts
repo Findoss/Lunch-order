@@ -73,30 +73,24 @@ export const startPoll = (ctx: ContextTelegraf) => {
           return;
         }
 
-        console.log(poll);
-
         // формируем заказ из опроса
         const { originalOrder, optimizitionOrder } = createOrder(cafe, poll);
 
         // логируем
-
         storeArhiveOrder({
           idPoll: idPoll,
           order: optimizitionOrder,
           date: Date.now(),
         });
 
-        // const order = logOrder;
-
         // отправляем отчет оптимизации
         ctx.telegram.sendMessage(
           REPORT_ID_CHENAL,
           textReportOrder(optimizitionOrder, cafe)
         );
-        // отправляем результат
-        // console.log(originalOrder);
 
-        // ctx.replyWithMarkdown(textOrder(originalOrder, cafe));
+        // отправляем результат
+        ctx.replyWithMarkdown(textOrder(originalOrder, cafe));
       }, TIME_WAIT);
     });
 };
