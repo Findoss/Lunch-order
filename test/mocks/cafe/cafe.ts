@@ -1,4 +1,4 @@
-import type { Cafe } from '../../src/models/cafe/types';
+import type { Cafe } from '../../../src/models/cafe/types';
 
 export const cafe: Cafe = {
   food: {

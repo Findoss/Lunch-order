@@ -15,12 +15,12 @@ export const enrichmentCombo = (
 ): OrderCombo[] => {
   return combos
     .map((combo) => {
-      const comboLength = combo.length;
+      const countUser = combo.length;
       const keys = getKey(combo);
       const cost = getCost(keys, menu);
       const priceCombo = getMenuPrice(combo);
       const profitCombo = getProfit(keys, priceCombo, menu);
-      const profitUser = getProfitUser(comboLength, profitCombo);
+      const profitUser = getProfitUser(countUser, profitCombo);
 
       return {
         keys,
@@ -35,5 +35,10 @@ export const enrichmentCombo = (
       };
     })
     .filter((v) => v.cost !== null)
-    .sort((a, b) => b.profit - a.profit) as OrderCombo[];
+    .sort((v1, v2) => {
+      const maxProfit1 = Math.max(...v1.combo.map((v) => v.profit));
+      const maxProfit2 = Math.max(...v2.combo.map((v) => v.profit));
+
+      return maxProfit2 - maxProfit1;
+    }) as OrderCombo[];
 };

@@ -1,4 +1,4 @@
-import type { Order, OrderCombo } from '../../models/order/types';
+import type { OrderCombo } from '../../models/order/types';
 
 export const filterCombo = (allCombos: OrderCombo[]) => {
   const combos: OrderCombo[] = [];
@@ -19,7 +19,5 @@ export const filterCombo = (allCombos: OrderCombo[]) => {
     i = 0;
   }
 
-  console.log('allCombos', JSON.stringify(allCombos, null, 2));
-  console.log('combos', JSON.stringify(combos, null, 2));
   return combos;
 };
