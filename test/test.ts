@@ -5,14 +5,17 @@ import { maxComboEl } from '../src/services/optimization/utils';
 import { cafe } from './mocks/cafe';
 import { orders1 } from './mocks/orders';
 import { rawCombos1, fullCombos1 } from './mocks/combos';
-import { getUserFood } from '../src/controllers/order/selectors';
+import { getUserFood } from '../src/services/optimization/selectors';
 import {
   textComboOriginalOrder,
   textUserFood,
   textUserOrderCost,
   textComboOptimazeOrder,
   textReportOrder,
-} from '../src/controllers/order/text';
+  textOrder,
+} from '../src/services/optimization/text';
+import { a6 } from './mocks/answers';
+import { createOrder } from '../src/services/optimization';
 
 describe('optimization', () => {
   test('combine', () => {
@@ -41,11 +44,18 @@ describe('optimization', () => {
   });
 
   test('text', () => {
-    const arr = fullCombos1;
+    // const arr = fullCombos1;
+    // const result4 = textReportOrder(arr, cafe);
+    // console.log(JSON.stringify(result4, null, 2));
+    // expect(result).toEqual(filteredCombos1);
+  });
 
-    const result4 = textReportOrder(arr, cafe);
-    console.log(JSON.stringify(result4, null, 2));
-
+  test('Оптимизация заказов (3 взяли разное)', () => {
+    const { optimizitionOrder, originalOrder } = createOrder(cafe, a6);
+    const result1 = textOrder(originalOrder, cafe);
+    const result2 = textReportOrder(optimizitionOrder, cafe);
+    console.log(result1);
+    console.log(result2);
     // expect(result).toEqual(filteredCombos1);
   });
 });

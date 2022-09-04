@@ -1,4 +1,4 @@
-import { Cafe } from '../../models/cafe/types';
+import type { Cafe } from '../../models/cafe/types';
 
 export const combosAvailable = (menu: Cafe['menu']) => {
   return menu.map((combo) => combo.combo);

@@ -1,11 +1,11 @@
 import type { Cafe } from '../../models/cafe/types';
-import type { Order, OrderCombo } from '../../models/order/types';
+import type { Order } from '../../models/order/types';
 import type { OrderAnswer } from '../../models/poll/types';
 
 import { combine } from './combine';
 import { enrichmentCombo } from './enrichment';
 import { filterCombo } from './filter';
-import { getCost } from '../../controllers/order/selectors';
+import { getCost } from './selectors';
 import { maxComboEl } from './utils';
 
 const getRawOrder = (cafe: Cafe, answers: OrderAnswer[]) => {

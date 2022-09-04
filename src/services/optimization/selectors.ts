@@ -5,9 +5,6 @@ import { arraysEqual } from '../../utils/array-equal';
 
 export const getComboInMenu = (keys: Food[], menu: Cafe['menu']) =>
   menu.find(({ combo }) => {
-    console.log('combo', combo);
-    console.log('keys', keys);
-
     return arraysEqual(combo, keys);
   });
 
@@ -17,10 +14,7 @@ export const getMenuPrice = (combo: Order[]) =>
 export const getKey = (combo: Order[]) => combo.map((v) => v.keys).flat(1);
 
 export const getCost = (keys: Food[], menu: Cafe['menu']) => {
-  // console.log('getComboInMenu', getComboInMenu(keys, menu));
-
   const menuCombo = getComboInMenu(keys, menu)?.price ?? null;
-
   return menuCombo;
 };
 

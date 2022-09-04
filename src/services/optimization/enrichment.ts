@@ -7,7 +7,7 @@ import {
   getMenuPrice,
   getProfit,
   getProfitUser,
-} from '../../controllers/order/selectors';
+} from './selectors';
 
 export const enrichmentCombo = (
   combos: Order[][],
