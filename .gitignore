@@ -1,5 +1,8 @@
-*.env
+.env*
+!.env.example
+
 .vscode
 node_modules
+tmp
 
-db.json
+db*.json
