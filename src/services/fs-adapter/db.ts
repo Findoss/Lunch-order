@@ -1,7 +1,7 @@
 import { FILE_NAME_DB, IS_DEV } from '../../config';
 import JSONdb from 'simple-json-db';
 
-export const db = new JSONdb(`./db.${FILE_NAME_DB}.json`, {
+export const db = new JSONdb(`./db/${FILE_NAME_DB}.json`, {
   asyncWrite: true,
   jsonSpaces: !IS_DEV,
 });

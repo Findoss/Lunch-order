@@ -2,11 +2,13 @@
   "name": "lunch-order",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "author": "Nikita Stroganov",
+  "license": "MIT",
+  "main": "dist/index.js",
   "scripts": {
     "formater": "prettier --config .prettierrc \"./src/**/*.ts\" --write",
     "linter": "eslint . --ext .ts",
-    "start": "cross-env APP=prod ts-node src/index.ts",
+    "start": "cross-env APP=prod node dist/index.js",
     "dev": "cross-env APP=dev ts-node src/index.ts",
     "test": "jest --watch"
   },
@@ -14,12 +16,15 @@
     "type": "git",
     "url": "git+https://github.com/Findoss/Lunch-order.git"
   },
-  "author": "Nikita Stroganov",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Findoss/Lunch-order/issues"
   },
   "homepage": "https://github.com/Findoss/Lunch-order#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run formater && npm run linter"
+    }
+  },
   "dependencies": {
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
@@ -27,11 +32,6 @@
     "effector-storage": "^5.0.0",
     "simple-json-db": "^2.0.0",
     "telegraf": "^4.8.6"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run formater && npm run linter"
-    }
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
@@ -50,6 +50,6 @@
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.2"
   }
 }
