@@ -6,11 +6,13 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
+    "test": "jest --watch",
     "formater": "prettier --config .prettierrc \"./src/**/*.ts\" --write",
     "linter": "eslint . --ext .ts",
+    "build": "npx tsc",
     "start": "cross-env APP=prod node dist/index.js",
-    "dev": "cross-env APP=dev npx tsc src/index.ts",
-    "test": "jest --watch"
+    "prestart": "npm run build",
+    "dev": "cross-env APP=dev node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "husky": "^8.0.1",
     "jest": "^28.1.3",
     "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
     "tslib": "^2.4.0",
     "typescript": "^4.8.2"
   }
