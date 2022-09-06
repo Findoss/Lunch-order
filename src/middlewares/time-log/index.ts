@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { ContextTelegraf } from '../../services/telegram/types';
 
 export const timeLog = async (

@@ -6,13 +6,19 @@ import { combine } from './combine';
 import { enrichmentCombo } from './enrichment';
 import { filterCombo } from './filter';
 import { getCost } from './selectors';
+import { sortCombo } from './sort';
 import { maxComboEl } from './utils';
 
 const getRawOrder = (cafe: Cafe, answers: OrderAnswer[]) => {
   const { menu } = cafe;
 
   return answers.map((answer) => {
-    const order: Order = { ...answer, price: getCost(answer.keys, menu) ?? 0 };
+    const order: Order = {
+      ...answer,
+      price: getCost(answer.keys, menu) ?? 0,
+      profit: 0,
+      cost: 0,
+    };
     return order;
   });
 };
@@ -33,7 +39,8 @@ const createOptimizitionOrder = (cafe: Cafe, answers: OrderAnswer[]) => {
   }
 
   const allOptimizitionCombos = enrichmentCombo(allCombos, cafe);
-  const optimizitionCombos = filterCombo(allOptimizitionCombos);
+  const sortedOptimizitionCombos = sortCombo(allOptimizitionCombos);
+  const optimizitionCombos = filterCombo(sortedOptimizitionCombos);
 
   return optimizitionCombos;
 };

@@ -4,7 +4,6 @@ import { REPORT_ID_CHENAL } from '../../config';
 
 import { createOrder } from '../../services/optimization';
 import {
-  textOrder,
   textReportOrder,
   textOrderOptimization,
 } from '../../services/optimization/text';
@@ -88,10 +87,10 @@ export const startPoll = (ctx: ContextTelegraf) => {
         });
 
         // отправляем отчет оптимизации
-        // ctx.telegram.sendMessage(
-        //   REPORT_ID_CHENAL,
-        //   textReportOrder(optimizitionOrder, cafe)
-        // );
+        ctx.telegram.sendMessage(
+          REPORT_ID_CHENAL,
+          textReportOrder(optimizitionOrder, cafe)
+        );
 
         // отправляем результат
         ctx.replyWithMarkdown(textOrderOptimization(optimizitionOrder, cafe));

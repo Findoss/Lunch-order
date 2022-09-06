@@ -1,4 +1,5 @@
 import './config/env';
+import { IS_DEV } from './config';
 
 import { bot } from './services/telegram';
 
@@ -16,7 +17,9 @@ import { setPollTime, startPoll, answerPoll } from './controllers/poll';
 import './models/admin';
 
 // middlewares
-bot.use(timeLog);
+if (IS_DEV) {
+  bot.use(timeLog);
+}
 
 // test
 bot.command('test', help);

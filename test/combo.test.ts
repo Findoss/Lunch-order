@@ -37,7 +37,7 @@ describe('Создание комбинаций', () => {
     expect(result).toEqual(rawCombos3);
   });
 
-  test('комбинации из максимального количеста элементов в комбо меню', () => {
+  test('комбинации из максимального кол-ва элементов в комбо меню', () => {
     const arr = orders1;
     const max = maxComboEl(cafe.menu);
 
