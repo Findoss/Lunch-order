@@ -11,7 +11,7 @@
     "linter": "eslint . --ext .ts",
     "build": "npx tsc",
     "clear": "npx tsc --clean",
-    "start": "cross-env APP=prod node dist/index.js",
+    "start": "cross-env APP=prod pm2 start pm2.config.cjs",
     "prestart": "npm run build",
     "dev": "cross-env APP=dev node dist/index.js"
   },
