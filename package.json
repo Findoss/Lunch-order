@@ -12,7 +12,7 @@
     "build": "npx tsc",
     "clear": "npx tsc --clean",
     "start": "cross-env APP=prod pm2 start pm2.config.cjs",
-    "prestart": "npm run build && mkdir db",
+    "prestart": "npm run build",
     "prod": "cross-env APP=prod ts-node src/index.ts",
     "dev": "cross-env APP=dev ts-node src/index.ts"
   },

@@ -6,4 +6,4 @@ node_modules
 tmp
 
 dist
-db
+db/*.json
