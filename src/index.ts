@@ -9,15 +9,15 @@ import { users } from './controllers/user';
 import { help } from './controllers/help';
 import { hello } from './controllers/hello';
 import { updateStore } from './controllers/update-store';
-
 import { stats } from './controllers/stats';
 import { addAdmin, removeAdmin, listAdmin } from './controllers/admin';
 import { setPollTime, startPoll, answerPoll } from './controllers/poll';
+import { errorBoundary } from './controllers/error';
 
 import './models/admin';
 
 // info
-// bot.on('new_chat_members', hello);
+bot.on(':new_chat_members', hello);
 bot.command('hello', hello);
 bot.command('users', users);
 bot.command('menu', menu);
@@ -37,5 +37,7 @@ bot.on('poll_answer', answerPoll);
 
 // update config bot
 bot.on('message:document', isAdmin, isParams(['part_state']), updateStore);
+
+bot.catch(errorBoundary);
 
 bot.start();
