@@ -87,7 +87,7 @@ export const startPoll = (ctx: ContextTelegraf) => {
         });
 
         // отправляем отчет оптимизации
-        ctx.telegram.sendMessage(
+        ctx.api.sendMessage(
           REPORT_ID_CHENAL,
           textReportOrder(optimizitionOrder, cafe)
         );

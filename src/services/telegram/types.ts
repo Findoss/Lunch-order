@@ -1,8 +1,9 @@
-import { Context } from 'telegraf';
+import type { Context as ContextGrammy } from 'grammy';
+import type { FileFlavor } from '@grammyjs/files';
+import type { Message } from 'grammy/out/types.node';
 
-type CustomMessage = { text?: string; caption?: string };
-
-export interface ContextTelegraf extends Context {
-  message: Context['message'] & CustomMessage;
+type ContextGrammyFiles = FileFlavor<ContextGrammy>;
+export type ContextTelegraf = ContextGrammyFiles & {
+  replyWithMarkdown: (...args: any[]) => Promise<Message.TextMessage>;
   commadnParams: string[];
-}
+};
