@@ -1,7 +1,7 @@
 import type { Cafe, Food } from '../../models/cafe/types';
 import type { Order, OrderCombo } from '../../models/order/types';
 
-import { arraysEqual } from '../../utils/array-equal';
+import { arraysEqual } from '../../utils/array';
 import { floor5 } from '../../utils/number';
 
 export const getComboInMenu = (keys: Food[], menu: Cafe['menu']) =>

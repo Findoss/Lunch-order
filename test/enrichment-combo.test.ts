@@ -11,8 +11,6 @@ describe('optimization', () => {
 
     const result = enrichmentCombo(arr, menu);
 
-    console.log(JSON.stringify(result));
-
     expect(result).toEqual(enrichmentCombo1);
   });
 });

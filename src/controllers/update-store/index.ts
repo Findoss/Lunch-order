@@ -1,7 +1,8 @@
+import type { ContextTelegraf } from '../../services/telegram/types';
 import { setUserList } from '../user';
 import { setCafe } from '../cafe';
 
-export const updateStore = (ctx: any) => {
+export const updateStore = async (ctx: ContextTelegraf) => {
   const [partState] = ctx.commadnParams;
 
   if (partState === 'users') {

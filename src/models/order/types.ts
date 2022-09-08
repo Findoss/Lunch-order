@@ -6,8 +6,8 @@ export type Order = {
   username: UserName;
   keys: Food[];
   price: number;
-  profit?: number;
-  cost?: number;
+  profit: number;
+  cost: number;
 };
 
 export type OrderLog = {

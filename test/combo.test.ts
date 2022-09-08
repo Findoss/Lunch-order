@@ -1,3 +1,5 @@
+import type { Order } from '../src/models/order/types';
+
 import { combine } from '../src/services/optimization/combine';
 import { maxComboEl } from '../src/services/optimization/utils';
 
@@ -35,11 +37,11 @@ describe('Создание комбинаций', () => {
     expect(result).toEqual(rawCombos3);
   });
 
-  test('комбинации из максимального количеста элементов в комбо меню', () => {
+  test('комбинации из максимального кол-ва элементов в комбо меню', () => {
     const arr = orders1;
     const max = maxComboEl(cafe.menu);
 
-    const result = [];
+    const result: Order[][] = [];
     for (let i = 1; i <= max; i++) {
       result.push(...combine(arr, i));
     }

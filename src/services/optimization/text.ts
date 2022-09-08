@@ -1,7 +1,7 @@
 import type { Cafe, Combo, Food, Foods } from '../../models/cafe/types';
 import type { Order, OrderCombo } from '../../models/order/types';
 
-import { arraysEqual } from '../../utils/array-equal';
+import { arraysEqual } from '../../utils/array';
 import { getOnlyUserCombo } from './selectors';
 
 export const textFood = (food: Foods, item: keyof Foods): string => {
@@ -113,7 +113,7 @@ export const textOrderOptimization = (combos: OrderCombo[], cafe: Cafe) => {
     '\n\n',
     '**Итог** ',
     textAllCost(combos) + 'p',
-    profit ? ` (выгода ${profit}p)` : '',
+    profit ? ` (экономия ${profit}p)` : '',
     '\n\n',
     textUserOrderCost(combos),
   ].join('');

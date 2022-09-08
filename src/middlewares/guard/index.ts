@@ -1,16 +1,14 @@
+import type { MiddlewareFn } from 'grammy';
+import type { ContextTelegraf } from '../../services/telegram/types';
+
 import { ADMIN_USERNAME } from '../../config';
 import { selectHasAdmin, selectAdminList } from '../../models/admin';
 
-import type { ContextTelegraf } from '../../services/telegram/types';
-
-export const isAdmin = async (
-  ctx: ContextTelegraf,
-  next: () => Promise<void>
-) => {
-  const userName = ctx.message.from.username ?? '';
+export const isAdmin: MiddlewareFn<ContextTelegraf> = async (ctx, next) => {
+  const userName = ctx.message?.from?.username ?? '';
 
   if (!selectHasAdmin(userName) && userName !== ADMIN_USERNAME) {
-    ctx.reply(
+    ctx.replyWithMarkdown(
       `Не суетись, я слушаюсь только создателя @${ADMIN_USERNAME} и админов ${selectAdminList()}`
     );
     return;
@@ -18,20 +16,3 @@ export const isAdmin = async (
     await next();
   }
 };
-
-export const isParams =
-  (paramsRequire: string[] = []) =>
-  async (ctx: ContextTelegraf, next: () => Promise<void>) => {
-    const raw = ctx.message.text ?? ctx.message.caption ?? '';
-    const params = raw.replace('/', '').split(' ');
-    params.shift(); // cmd
-
-    if (params.length >= paramsRequire.length) {
-      ctx.commadnParams = params;
-      await next();
-    } else {
-      ctx.replyWithMarkdown(
-        `Обязательные параметры - \`${paramsRequire.join(`\`, \``)}\``
-      );
-    }
-  };

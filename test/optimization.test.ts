@@ -28,8 +28,6 @@ import {
   o10,
 } from './mocks/combos/keys-combos';
 
-import { textReportOrder, textOrder } from '../src/services/optimization/text';
-
 const getKeys = (combos: OrderCombo[]) => combos.map((v) => v.keys);
 
 describe('Оптимизация', () => {
@@ -69,8 +67,6 @@ describe('Оптимизация', () => {
     const { optimizitionOrder } = createOrder(cafe, a5);
 
     const result = getKeys(optimizitionOrder);
-
-    console.log(textReportOrder(optimizitionOrder, cafe));
 
     expect(result).toEqual(o5);
   });
@@ -119,8 +115,6 @@ describe('Оптимизация', () => {
     const { optimizitionOrder } = createOrder(cafe, a10);
 
     const result = getKeys(optimizitionOrder);
-
-    console.log(result);
 
     expect(result).toEqual(o10);
   });
