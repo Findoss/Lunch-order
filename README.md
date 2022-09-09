@@ -10,6 +10,7 @@
 | `/help`          | all    | -                      | выводит подсказку по командам                                            |
 | `/admins`        | all    | -                      | выводит список админов                                                   |
 | `/users`         | all    | -                      | выводит список участников                                                |
+| `/hello`         | all    | -                      | выводит приветствие                                                      |
 |                  |        |                        |                                                                          |
 | `/start` `/poll` | admin  | -                      | запускает опрос                                                          |
 | `/set_poll_time` | admin  | _number_ `<time>`      | устанавливает время для опроса в секундах (от 10 до 600 сек)             |
@@ -18,13 +19,6 @@
 | `/add_admin`     | admin  | _string_ `<@username>` | добавляет админа                                                         |
 | `/add_remove`    | admin  | _string_ `<@username>` | удаляет админа                                                           |
 | `/up` + document | admin  | _string_ `cafe\|users` | устанавливает меню или данные пользователей, документ должен быть `json` |
-
-Зависимоси
-
-- telegraf - фреймворек для telegram
-- effector - управления состоянием
-- effector-storage - сохранение состояния
-- simple-json-db - запись json на диск
 
 Формат для обновлиня данных
 
