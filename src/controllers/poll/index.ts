@@ -1,12 +1,7 @@
 import type { ContextTelegraf } from '../../services/telegram/types';
 
-import { REPORT_ID_CHENAL } from '../../config';
-
 import { createOrder } from '../../services/optimization';
-import {
-  textReportOrder,
-  textOrderOptimization,
-} from '../../services/optimization/text';
+import { textOrderOptimization } from '../../services/optimization/text';
 
 import { selectCafe, selectFoodKeys, selectFoodValue } from '../../models/cafe';
 import {
@@ -85,12 +80,6 @@ export const startPoll = (ctx: ContextTelegraf) => {
           order: optimizitionOrder,
           date: Date.now(),
         });
-
-        // отправляем отчет оптимизации
-        ctx.api.sendMessage(
-          REPORT_ID_CHENAL,
-          textReportOrder(optimizitionOrder, cafe)
-        );
 
         // отправляем результат
         ctx.replyWithMarkdown(textOrderOptimization(optimizitionOrder, cafe));
