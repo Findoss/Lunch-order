@@ -2,7 +2,7 @@ import './config/env';
 
 import { bot } from './services/telegram';
 
-import { isAdmin, isParams } from './middlewares';
+import { isAdmin, isParams, isCommand } from './middlewares';
 
 import { menu } from './controllers/menu';
 import { users } from './controllers/user';
@@ -32,7 +32,7 @@ bot.command('stats', isAdmin, stats);
 // poll
 bot.command('set_poll_time', isAdmin, isParams(['time(seconds)']), setPollTime);
 bot.command('start', isAdmin, startPoll);
-bot.on('message:photo', isAdmin, startPoll);
+bot.on('message:photo', isAdmin, isCommand('start'), startPoll);
 bot.on('poll_answer', answerPoll);
 
 // update config bot

@@ -26,7 +26,7 @@ export const setPollTime = (ctx: ContextTelegraf) => {
 
   if (seconds < MIN || seconds > MAX) {
     ctx.replyWithMarkdown(
-      `Время опроса ддолжно быть не меньше ${MIN} секнд и не больше ${MAX}`
+      `Время опроса должно быть не меньше ${MIN} секунд и не больше ${MAX}`
     );
     return;
   }
